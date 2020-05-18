@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class NewTransaction extends StatelessWidget {
   final Function addTransaction;
 
@@ -12,31 +11,17 @@ class NewTransaction extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
         mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          TextField(
-            controller: titleController,
-            decoration: InputDecoration(labelText: 'Title'),
-          ),
-          TextField(
-            keyboardType: TextInputType.number,
-            controller: amountController,
-            decoration: InputDecoration(labelText: 'Amount'),
-          ),
-          FlatButton(
-            child: Text("Submit"),
-            color: Colors.blue,
-            onPressed: () {
-              if ((titleController.text == "") ||
-                  (amountController.text == "")) {
-                showAlertDialog(context, "Please check your inputs", "");
-              } else {
-                print("Click Button");
-                print(titleController.text);
-                print(amountController.text);
-                addTransaction(titleController.text, amountController.text);
-              }
-            },
+          Container(
+            child: Text("IMBD TOP 10",
+                style: TextStyle(
+                  color: Colors.yellow[800],
+                  fontWeight: FontWeight.bold,
+                  fontSize: 40,
+                  decoration: TextDecoration.underline,
+                )),
+            margin: EdgeInsets.only(top: 40, bottom: 40),
           )
         ]);
   }
