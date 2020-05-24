@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
+  
 
   final String title;
 
@@ -51,6 +52,7 @@ class _HomePage extends State<HomePage> with TickerProviderStateMixin {
         AnimationController(vsync: this, duration: Duration(milliseconds: 300));
     _arrowAnimation =
         Tween(begin: 0.0, end: 180.0).animate(_arrowAnimationController);
+        
   }
 
   @override
@@ -259,15 +261,21 @@ class _HomePage extends State<HomePage> with TickerProviderStateMixin {
                   json.decode(response.body) as Map<String, dynamic>;
               final List<Transaction> transaction = [];
 
-              extractedData.forEach((prodId, prodData) {
-                transaction
-                    .add(Transaction(name: 'Best Movie', rating: '9.9'));
+              print(extractedData);
+
+              extractedData.forEach((String prodId, dynamic prodData) {
+                print(prodData["name"].toString());
+                print(prodData["rating"]);
+                transaction.add(Transaction(
+                    name: prodData["name"].toString(),
+                    rating: prodData["rating"].toString()));
               });
               print(transaction);
             });
 
             Navigator.of(context)
                 .pushNamed(UserTransactions.routeName, arguments: {
+                
               // 'name': 'xx',
               // 'rating': 'yy',
             });

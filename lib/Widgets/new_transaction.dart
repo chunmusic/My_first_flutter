@@ -1,4 +1,12 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'package:flutter_test_project/Models/transaction.dart';
+import 'package:flutter_test_project/Widgets/user_transaction.dart';
+import 'package:flutter_test_project/context.dart';
+import 'package:getflutter/getflutter.dart';
+import 'package:flutter_test_project/tab_screen.dart';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class NewTransaction extends StatelessWidget {
   final Function addTransaction;
@@ -22,7 +30,7 @@ class NewTransaction extends StatelessWidget {
                   decoration: TextDecoration.underline,
                 )),
             margin: EdgeInsets.only(top: 40, bottom: 40),
-          )
+          ),
         ]);
   }
 
